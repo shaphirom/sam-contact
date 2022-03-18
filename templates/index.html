@@ -1,0 +1,62 @@
+{% extends "base.html"%}
+
+{% block body %}
+
+<div class="uppercase flex align-center justify-center font-bold p-5">
+    Home Page
+</div>
+
+
+<div class="flex justify-evenly ">
+    <div  >
+
+        <form action="/new" method="POST" class="shadow-lg p-4">
+            
+            <p class="p-1 border-1 border-black">
+                <input type="text" name="fullname" placeholder="Write Fullname">
+            </p>
+            <p class="p-1">
+                <input type="text" name="email" placeholder="Write email">
+            </p>
+            <p class="p-1">
+                <input type="text" name="phone" placeholder="Write phone">
+            </p>
+            
+            <button class="p-2">Save</button>
+            
+            
+        </form>
+    </div>
+
+    <div >
+
+        {%for contact in contacts%}
+        
+        <div class="p-6 m-2 max-w-sm mx-auto bg-indigo-100 rounded-xl shadow-lg flex items-center space-x-4 justify-evenly">
+            
+            <div class="shrink-0 p-6">
+                
+                <p class="font-bold p-1">{{contact.fullname}}</p>
+                <p class="p-1">{{contact.email}}</p>
+                <p class="p-1">{{contact.phone}}</p>
+                
+            </div>
+            
+            <div class="align-center ">
+                <p class="p-3 rounded-xl space-x-4">
+                    <a class="m-3 p-2 bg-blue-400 " href="{{url_for('contacts.update',id = contact.id)}}">Update</a>
+                </p>
+                <p class="p-3 rounded-xl space-x-4">
+                    <a class="m-3 p-2 bg-red-300" href="{{url_for('contacts.delete',id=contact.id)}}">Delete</a>
+                </p>
+            </div>
+            
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

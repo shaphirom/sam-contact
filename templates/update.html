@@ -1,0 +1,30 @@
+
+{% extends "base.html"%}
+
+{% block body %}
+
+
+<div class="uppercase flex align-center justify-center font-bold p-5">
+    Update
+</div>
+
+<div class="flex justify-center align-center">
+    <form action="/update/{{contact.id}}" method="POST" class="shadow-lg p-4">
+        <p class="p-1">
+            <input type="text" name="fullname" placeholder="Write Fullname" value="{{contact.fullname}}">
+        </p>
+        <p class="p-1">
+            <input type="text" name="email" placeholder="Write email" value="{{contact.email}}">
+        </p>
+        <p class="p-1">
+            <input type="text" name="phone" placeholder="Write phone" value="{{contact.phone}}">
+        </p>
+    
+        <button class="p-3 bg-green-200 rounded-xl mx-auto self-end">Save</button>
+    
+    
+    </form>
+
+</div>
+
+{% endblock %}
